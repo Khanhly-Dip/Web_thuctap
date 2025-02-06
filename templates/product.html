@@ -65,19 +65,20 @@
             <!-- Right Section -->
             <div class="container-right flex-1 relative min-h-[8rem]">
                 <!-- Nút kéo trái -->
-                <div class="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                <div id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
                     <i class="fa-solid fa-circle-chevron-left text-gray-400 text-3xl hover:text-black"></i>
                 </div>
             
                 <!-- Nội dung chính -->
-                <div class="container-content mx-auto w-4/5 overflow-hidden">
-                    <div class="content-img flex gap-4 justify-center items-center">
+                <div class="container-content mx-auto w-4/5 flex overflow-hidden">
+                    <div class="w-full h-auto flex transition-transform duration-500" id="slider">
                         <img class="w-full h-auto rounded-md border border-gray-300" src="{{ url_for('static', filename='imgae/bd1.jpg') }}" alt="Image 1">
+                        <img class="w-full h-auto rounded-md border border-gray-300" src="{{ url_for('static', filename='imgae/bd2.jpg') }}" alt="Image 2">
                     </div>
-                </div>
+                </div>                
             
                 <!-- Nút kéo phải -->
-                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                <div id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
                     <i class="fa-solid fa-circle-chevron-right text-gray-400 text-3xl hover:text-black"></i>
                 </div>
                 
@@ -104,13 +105,36 @@
                         {{ product.mota }}
                     </p>
                 </div>
-                <div class="container_buttonvote flex justify-end">
-                    <a href="/danhgia?id=${ungdung.id_ungdung}" class="border w-52 bg-[#Ffb800] py-2 cursor-pointer hover:bg-gray-500 hover:text-white rounded-md my-4">
+                <a href="/danhgia?id={{ product.id_ungdung }}" class="container_buttonvote flex justify-end">
+                    <button class="border w-52 bg-[#Ffb800] py-2 cursor-pointer hover:bg-gray-500 hover:text-white rounded-md my-4">
                         Đánh giá sản phẩm
-                    </a>
-                </div>
+                    </button>
+                </a>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.getElementById("slider");
+        const images = slider.getElementsByTagName("img");
+        const totalImages = images.length;
+        let currentIndex = 0;
+
+        document.getElementById("next").addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % totalImages; // Chuyển sang ảnh tiếp theo
+            updateSlider();
+        });
+
+        document.getElementById("prev").addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Quay về ảnh trước đó
+            updateSlider();
+        });
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    });
+
+    </script>
 </body>
 </html>
