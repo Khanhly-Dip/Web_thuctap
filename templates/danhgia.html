@@ -62,10 +62,15 @@
                         <textarea id="mota" class="my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nhập đánh giá" required></textarea>
                     </div>
                     <div id="message-container"></div>
-
-                    <div class="container-button">
-                        <button id="submit-rating" class="border-gray-300 bg-gray-200 p-3 rounded-md">Gửi đi</button>
+                    <div class="message-button flex items-center">
+                        <div class="container-button">
+                            <button id="submit-rating" class="mr-5 border-gray-300 bg-gray-200 p-3 rounded-md">Gửi đi</button>
+                        </div>
+                        <div class="container-button">
+                            <a href="{{ url_for('fanpage') }}" class="border-gray-300 bg-gray-200 p-3 rounded-md">Về trang chủ</a>
+                        </div>  
                     </div>
+                    
                 </div>
             </div>
             <!-- right -->

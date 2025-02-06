@@ -42,7 +42,7 @@
         </div>
         <div class="contaimer-form w-full flex justify-center items-center">
             
-            <form class="w-2/3">
+            <form class="w-2/3" id="myForm">
                 <div class="grid gap-6 mb-6 md:grid-cols-1">
                     <div>
                         <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Họ tên</label>
@@ -61,16 +61,41 @@
                         <textarea id="descrip" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nhập nội dung tại đây..."></textarea>
                     </div> 
                 </div>
-                
-                <button type="submit" 
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-                    onclick="alert('Gửi thành công!')">
+            
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Submit
                 </button>
             </form>
 
         </div>
     </div>
-
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Ngăn form gửi đi mặc định
+        
+            // Lấy giá trị input
+            let name = document.getElementById("first_name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let description = document.getElementById("descrip").value.trim();
+        
+            // Kiểm tra hợp lệ
+            if (name === "" || email === "" || phone === "") {
+                alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
+                return;
+            }
+        
+            if (!/^\d+$/.test(phone)) {
+                alert("Số điện thoại chỉ được chứa các chữ số!");
+                return;
+            }
+        
+            // Nếu hợp lệ, hiển thị thông báo thành công
+            alert("Gửi thành công!");
+        
+            // Nếu muốn gửi form thực sự sau khi kiểm tra hợp lệ, dùng:
+            // event.target.submit();
+        });
+        </script>
 </body>
 </html>
