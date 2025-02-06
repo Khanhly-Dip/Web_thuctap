@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Sử dụng Flask url_for để đảm bảo đường dẫn tĩnh chính xác -->
+    <link href="{{ url_for('static', filename='output.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    
+    <!-- CDN cho Tailwind CSS và các thư viện cần thiết -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <title>Giới Thiệu Ứng Dụng Công Nghệ</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="flex items-center justify-between bg-black p-5">
+            <div class="text-white text-sm w-36">CÔNG TY TNHH CÔNG NGHỆ 2WE</div>
+            <div class="text-white text-3xl font-bold text-center w-[400px] m-0">
+                WEBSITE GIỚI THIỆU ỨNG DỤNG CÔNG NGHỆ
+            </div>
+            <div>
+                <img src="https://i.pinimg.com/736x/7b/c8/3c/7bc83c6ff31e04694e9ed012f58fe42f.jpg" alt="Logo" class="h-20">
+            </div>
+           
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-full w-full flex flex-wrap">
+        <!-- Sidebar -->
+        <a href="{{ url_for('fanpage') }}" class="left-back w-full block">
+            <button class="mt-8 mb-4 ml-8">
+                <i class="fa-solid fa-house text-2xl hover:text-[#Ffb800]"></i>
+            </button>
+        </a>
+
+        <!-- Main Section -->
+        <div class="container-content px-8 flex w-full pt-4">
+            <!-- Left Section -->
+            <div class="container-left w-1/3 pl-4 relative">
+                <div class="left-logo flex justify-center">
+                    <img class="w-80 border rounded-3xl" src="{{ product.anh_ungdung}}" alt="Logo Face">
+                </div>
+                <div class="left-button">
+                    <div class="button-download flex justify-center w-full">
+                        <button class="border font-bold w-52 bg-[#Ffb800] py-2 cursor-pointer hover:bg-gray-500 hover:text-white rounded-md my-4">
+                            Tải ngay
+                        </button>
+                    </div>
+                    <div class="button-introduce flex justify-center w-full">
+                        <button class="border w-52 bg-[#Ffb800] py-2 cursor-pointer hover:bg-gray-500 hover:text-white rounded-md">
+                            Video giới thiệu
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="container-right flex-1 relative min-h-[8rem]">
+                <!-- Nút kéo trái -->
+                <div class="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                    <i class="fa-solid fa-circle-chevron-left text-gray-400 text-3xl hover:text-black"></i>
+                </div>
+            
+                <!-- Nội dung chính -->
+                <div class="container-content mx-auto w-4/5 overflow-hidden">
+                    <div class="content-img flex gap-4 justify-center items-center">
+                        <img class="w-full h-auto rounded-md border border-gray-300" src="{{ url_for('static', filename='imgae/bd1.jpg') }}" alt="Image 1">
+                    </div>
+                </div>
+            
+                <!-- Nút kéo phải -->
+                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                    <i class="fa-solid fa-circle-chevron-right text-gray-400 text-3xl hover:text-black"></i>
+                </div>
+                
+                <!-- Đánh giá -->
+                <div class="vote flex justify-end items-center mr-8 my-2">
+                    <h4 class="text-lg">Đánh giá</h4>
+                    <ul class="flex text-xl mx-1">
+                        <li><i class="fa-solid fa-star text-[#Fee600] mx-1"></i></li>
+                        <li><i class="fa-solid fa-star text-[#Fee600] mx-1"></i></li>
+                        <li><i class="fa-solid fa-star text-[#Fee600] mx-1"></i></li>
+                        <li><i class="fa-solid fa-star text-[#Fee600] mx-1"></i></li>
+                        <li><i class="fa-solid fa-star text-gray-400 mx-1"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mô tả sản phẩm -->
+        <div class="danhgia w-full flex justify-end">
+            <div class="descrip_votepro w-1/2 mr-32">
+                <div class="container_descrip">
+                    <label class="text-xl font-bold border-b border-gray-900 pb-1">Mô tả</label>
+                    <p class="py-3">
+                        {{ product.mota }}
+                    </p>
+                </div>
+                <div class="container_buttonvote flex justify-end">
+                    <button class="border w-52 bg-[#Ffb800] py-2 cursor-pointer hover:bg-gray-500 hover:text-white rounded-md my-4">
+                        Đánh giá sản phẩm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

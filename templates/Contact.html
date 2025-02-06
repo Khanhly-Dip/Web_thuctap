@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='output.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="flex items-center justify-between bg-black p-5">
+            <div class="text-white text-sm w-36">CÔNG TY TNHH CÔNG NGHỆ 2WE</div>
+            <div class="text-white text-3xl font-bold text-center w-[400px] m-0">WEBSITE GIỚI THIỆU ỨNG DỤNG CÔNG NGHỆ</div>
+            <div>
+                <img src="/imgae/logo.jpg" alt="" class="h-20">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="container-tabar flex items-center ">
+            <div class="w-full py-4">
+                <div class="w3-bar">
+                    <a href="{{ url_for('fanpage') }}" class="w3-bar-item w3-button">Trang chủ</a>
+                    <a href="{{ url_for('forstudent') }}" class="w3-bar-item w3-button">Ứng dụng dành cho sinh viên công nghệ thông tin</a>
+                </div>
+            </div>
+
+            <div class="taskbar-user w-44 pr-8">
+                <button class="text-3xl hidden"><i class="fa-solid fa-user"></i></button>
+                <a href="{{ url_for('login') }}" class="text-xl border-b border-gray-300 p-2 hover:text-white hover:bg-gray-300 hover:rounded-md">Đăng nhập</a>
+            </div>
+        </div>
+        <div class="container-label px-4 pb-5   ">
+            <h2>Liên hệ với công ty chúng tôi</h2>
+        </div>
+        <div class="contaimer-form w-full flex justify-center items-center">
+            
+            <form class="w-2/3">
+                <div class="grid gap-6 mb-6 md:grid-cols-1">
+                    <div>
+                        <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Họ tên</label>
+                        <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Địa chỉ email</label>
+                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Số điện thoại</label>
+                        <input type="number" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                    </div>
+                    <div>
+                        <label for="descrip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nội dung</label>
+                        <textarea id="descrip" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nhập nội dung tại đây..."></textarea>
+                    </div> 
+                </div>
+                
+                <button type="submit" 
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                    onclick="alert('Gửi thành công!')">
+                    Submit
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

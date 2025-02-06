@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/dist/styles.css"> -->
+    <link href="{{ url_for('static', filename='output.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="flex items-center justify-between bg-black p-5">
+            <div class="text-white text-sm w-36">CÔNG TY TNHH CÔNG NGHỆ 2WE</div>
+            <div class="text-white text-3xl font-bold text-center w-[400px] m-0">WEBSITE GIỚI THIỆU ỨNG DỤNG CÔNG NGHỆ</div>
+            <div>
+                <img src="https://i.pinimg.com/736x/7b/c8/3c/7bc83c6ff31e04694e9ed012f58fe42f.jpg" alt="" class="h-20">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+       <div class="container-tabar flex items-center ">
+            <div class="w-full py-4">
+                <div class="w3-bar">
+                    <a href="{{ url_for('fanpage') }}" class="w3-bar-item w3-button w3-light-grey">Trang chủ</a>
+                    <a href="{{ url_for('forstudent') }}" class="w3-bar-item w3-button ">Ứng dụng dành cho sinh viên công nghệ thông tin</a>
+                </div>
+            </div>
+
+            <div class="taskbar-user w-44 pr-8">
+                <button class="text-3xl hidden"><i class="fa-solid fa-user"></i></button>
+                <a href="{{ url_for('login') }}" class="text-xl border-b border-gray-300 p-2 hover:text-white hover:bg-gray-300 hover:rounded-md">Đăng nhập</a>
+            </div>
+        </div>
+        <!-- Container Search -->
+        <div class="container-search w-full flex justify-end px-5">
+            
+            <form class=" w-96 " id="search-form">   
+                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative flex justify-end">
+                    <!-- <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        
+                    </div> -->
+                    <input type="search" id="search-input" class="block w-96 p-4 ps-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-gray-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                </div>
+            </form>
+            <!-- <a href=""></a> -->
+        </div>
+<!-- phầm silde show -->
+        <div class="container-right flex-1 relative min-h-[8rem] py-12">
+            <!-- Nút kéo trái -->
+            <div class=" ml-16 absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onclick="plusSlides(-1)">
+                <i class="fa-solid fa-circle-chevron-left text-gray-400 text-3xl hover:text-black"></i>
+            </div>
+
+            <!-- Nội dung chính -->
+            <div class="container-content mx-auto w-4/5 overflow-hidden">
+                <div class="content-img flex gap-4 justify-center items-center">
+                    <!-- Các hình ảnh trong slideshow có class 'mySlides' -->
+                    <div class="mySlides flex w-full justify-evenly">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/8b/47/6c/8b476ccd451557dd2791077d0543bbe1.jpg" alt="Image 1">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/4b/f2/b7/4bf2b712d30c709f69eb9405fe1480c9.jpg" alt="Image 2">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/76/71/9a/76719a71285b0dbde2e505df6b139514.jpg" alt="Image 3">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/f9/22/b4/f922b43d9efdb857ea6c1221a0843e41.jpg" alt="Image 4">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/10/6d/00/106d00471d9ec58d43de717c8569eba2.jpg" alt="Image 5">
+                    </div>
+                    <div class="mySlides  flex w-full justify-evenly">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/0f/1c/85/0f1c8598a92d18f1ef7826d78f33c551.jpg" alt="Image 1">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/51/0c/5f/510c5febc999b118d2b04b844ba84cb5.jpg" alt="Image 2">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/ca/d6/03/cad6039c053896e2719e664ff6b16705.jpg" alt="Image 3">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/bf/8a/76/bf8a76719f900b8757154eb3cfbc844a.jpg" alt="Image 4">
+                        <img class="w-28 rounded-2xl border border-gray-300" src="https://i.pinimg.com/736x/25/ea/59/25ea5941311b06c6cec08f99bf5d72a5.jpg" alt="Image 5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút kéo phải -->
+            <div class="absolute mr-16 right-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onclick="plusSlides(1)">
+                <i class="fa-solid fa-circle-chevron-right text-gray-400 text-3xl hover:text-black"></i>
+            </div>
+        </div>
+        <!-- phần trung tâm -->
+       <div class="">
+            <div class="flex items-center justify-center pt-5 mt-4 mb-12">
+                <h1 class=" font-bold text-3xl">Ứng dụng phổ biến nhất hiện nay</h1>
+            </div>
+            <div class="content-container mt-8 mb-4">
+                <div class=" flex justify-around px-24" id="app-container">
+                    <!-- Phần hiển thị nội dung lấy từ cơ sở dữ liệu -->
+                </div>
+
+            
+            </div>
+            <a href="{{ url_for('contact') }}" class="container-contact mr-8">
+                <button class="w-36 py-1 border border-gray-300 bg-[#Ffb800] rounded-md mb-4 mt-2 color-gray ml-auto block ">Liên hệ</button>
+            </a>
+       </div>
+
+    </div>
+    <script>
+// phần silde show
+    let slideIndex = 0;
+
+    // Chờ đến khi DOM được tải đầy đủ trước khi thực thi script
+    document.addEventListener("DOMContentLoaded", function () {
+        showSlides();
+    });
+
+    // Hàm di chuyển đến slide tiếp theo hoặc trước đó
+    function plusSlides(n) {
+        slideIndex += n;
+        showSlides();
+    }
+
+    // Hàm hiển thị các slide
+    function showSlides() {
+        let slides = document.querySelectorAll(".mySlides");
+
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+        if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+
+        // Ẩn tất cả các slide
+        slides.forEach(function(slide) {
+            slide.classList.add("hidden");
+        });
+
+        // Hiển thị slide hiện tại
+        slides[slideIndex].classList.remove("hidden");
+    }
+
+        // 
+
+        // Lấy dữ liệu từ API
+        let allApps = [];  // Biến lưu trữ toàn bộ ứng dụng sau khi fetch
+
+// Lấy dữ liệu từ API
+        async function fetchUngDung() {
+            try {
+                const response = await fetch('/api/ungdung');
+                if (!response.ok) throw new Error("Không thể tải dữ liệu từ API.");
+                
+                allApps = await response.json(); // Lưu dữ liệu vào biến allApps
+                renderApps(allApps); // Hiển thị tất cả ứng dụng khi tải trang
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu:", error);
+                document.getElementById('app-container').innerHTML = "<p class='text-red-500'>Không thể tải dữ liệu ứng dụng.</p>";
+            }
+        }
+
+        // Hàm hiển thị danh sách ứng dụng
+        function renderApps(appList) {
+            const container = document.getElementById('app-container');
+            container.innerHTML = ""; // Xóa nội dung cũ
+
+            if (appList.length === 0) {
+                container.innerHTML = "<p class='text-gray-700'>Không tìm thấy ứng dụng phù hợp.</p>";
+                return;
+            }
+
+            appList.forEach(ungdung => {
+                const appDiv = document.createElement('div');
+                appDiv.className = "bg-gray-300 h-80 w-44 relative rounded-md shadow-md";
+                appDiv.innerHTML = `
+                    <a href="/product?id=${ungdung.id_ungdung}">
+                        <div class="">
+                            <div class="absolute top-[-10%] right-[36%]">
+                                <img src="${ungdung.anh_ungdung}" alt="" class="w-16 border border-gray-300 rounded-full">
+                            </div>
+                            <div class="pt-6 text-center font-bold text-xl">
+                                <h4 class="mt-4 mb-1">${ungdung.ten_ungdung}</h4>
+                            </div>
+                            <div class="text-sm text-gray-900 px-2 h-[57%] text-justify">
+                                <p>${ungdung.mota ? ungdung.mota.substring(0, 190) + "..." : "Không có mô tả."}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="mt-5">
+                        <a href="/danhgia?id=${ungdung.id_ungdung}" class="flex justify-center absolute bottom-0 left-0 w-full py-1 border border-gray-400 rounded-b-md hover:text-white hover:bg-black">Đánh giá</a>
+                    </div>
+                `;
+                container.appendChild(appDiv);
+            });
+        }
+
+        // Tìm kiếm ứng dụng theo tên
+        function searchApps(keyword) {
+            const filteredApps = allApps.filter(app =>
+                app.ten_ungdung.toLowerCase().includes(keyword.toLowerCase())
+            );
+            renderApps(filteredApps); // Hiển thị ứng dụng sau khi lọc
+        }
+
+        // Bắt sự kiện khi submit form tìm kiếm
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn load lại trang
+            const keyword = document.getElementById('search-input').value.trim();
+            searchApps(keyword);  // Gọi hàm tìm kiếm
+        });
+
+        // Tải dữ liệu khi tải trang
+        fetchUngDung();
+
+    </script>
+</body>
+</html>

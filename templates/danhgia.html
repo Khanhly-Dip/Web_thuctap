@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='output.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="full-body w-full h-auto flex justify-center items-center fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="container shadow-xl p-4 w-full max-w-2xl max-h-full flex flex-wrap">
+            <h2 class="">ĐÁNH GIÁ ỨNG DỤNG</h2>
+
+            <div class="container flex">
+                <div class="container-right pr-4">
+                    <img class="w-80 border rounded-3xl" src="{{ product.anh_ungdung }}" alt="">
+                </div>
+                <div class="container-left flex-1">
+                    <div class="container-previous">
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                <div class="review">
+                                    <!-- <p><strong>{{ review['user_name'] }}</strong> đã đánh giá:</p> -->
+                                    <p>{{ review['mota'] }} - {{ review['saovote'] }} sao</p>
+                                    <p></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-md text-gray-400">Chưa có đánh giá nào</p>
+                            <p class="text-md text-gray-400">Hãy là người đầu tiên đánh giá trải nghiệm ứng dụng</p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="vote mr-8 my-2">
+                        <h4 class="text-lg font-bold">Đánh giá của bạn</h4>
+                        <ul class="flex text-xl mx-1" id="rating">
+                            <li>
+                                <i class="fa-solid fa-star mx-1 cursor-pointer text-gray-300" data-index="1"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-star mx-1 cursor-pointer text-gray-300" data-index="2"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-star mx-1 cursor-pointer text-gray-300" data-index="3"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-star mx-1 cursor-pointer text-gray-300" data-index="4"></i>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-star mx-1 cursor-pointer text-gray-300" data-index="5"></i>
+                            </li>
+                        </ul>
+                    </div>                    
+                    <div class="container-descrip flex flex-wrap">
+                        <label class="font-bold">Nhận xét của bạn *</label>
+                        <textarea id="mota" class="my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nhập đánh giá" required></textarea>
+                    </div>
+                    <div id="message-container"></div>
+
+                    <div class="container-button">
+                        <button id="submit-rating" class="border-gray-300 bg-gray-200 p-3 rounded-md">Gửi đi</button>
+                    </div>
+                </div>
+            </div>
+            <!-- right -->
+            
+            
+        </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const stars = document.querySelectorAll("#rating i");
+    let ratingValue = 0;
+
+    // Lắng nghe sự kiện click trên mỗi sao
+    stars.forEach(star => {
+        star.addEventListener("click", function() {
+            ratingValue = parseInt(star.getAttribute("data-index"));
+            
+            // Chỉnh sửa các sao để chúng sáng tương ứng với chỉ số sao đã chọn
+            stars.forEach(star => {
+                const index = parseInt(star.getAttribute("data-index"));
+                if (index <= ratingValue) {
+                    star.classList.add("text-yellow-500");
+                    star.classList.remove("text-gray-300");
+                } else {
+                    star.classList.remove("text-yellow-500");
+                    star.classList.add("text-gray-300");
+                }
+            });
+        });
+    });
+
+    // Lắng nghe sự kiện click trên nút "Gửi đi"
+    const submitButton = document.querySelector("button");
+    submitButton.addEventListener("click", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id_ungdung = urlParams.get('id');   // Ví dụ, bạn có thể lấy giá trị này từ URL hoặc từ một biến khác
+        const mota = document.querySelector("#mota").value;  // Lấy mô tả từ input
+        const saovote = ratingValue;
+
+        // Gọi hàm submitRating với các thông tin đã lấy được
+        submitRating(id_ungdung, mota, saovote);
+
+        // Làm trống ô input mô tả
+        document.querySelector("#mota").value = "";
+
+        // Hiển thị thông báo thành công
+        const message = document.createElement("p");
+        message.textContent = "Đánh giá thành công!";
+        message.style.color = "green";  // Bạn có thể thay đổi màu sắc cho phù hợp
+        message.style.fontWeight = "bold";
+
+        // Thêm thông báo vào trang (ví dụ: chèn vào phần tử có ID 'message-container')
+        const messageContainer = document.getElementById("message-container");
+        messageContainer.innerHTML = "";  // Xóa thông báo cũ, nếu có
+        messageContainer.appendChild(message);
+
+        // Tự động ẩn thông báo sau 3 giây (hoặc thời gian bạn muốn)
+        setTimeout(function() {
+            messageContainer.innerHTML = "";  // Xóa thông báo sau 3 giây
+        }, 3000);
+    });
+
+});
+
+// Hàm gửi dữ liệu đánh giá
+function submitRating(id_ungdung, mota, saovote) {
+    const data = {
+        id_ungdung: id_ungdung,
+        mota: mota,
+        saovote: saovote
+    };
+
+    fetch("/api/submit-rating", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Rating submitted successfully");
+        } else {
+            console.error("Error:", data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Request failed", error);
+    });
+}
+
+</script>
+</body>
+</html>
